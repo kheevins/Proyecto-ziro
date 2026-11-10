@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base; @tailwind components; @tailwind utilities;
+
+html{scroll-behavior:smooth}
+html,body{margin:0;background:#FBF7EC;font-family:'Poppins',sans-serif}
+section[id]{scroll-margin-top:0}
+
+@layer components {
+  /* Liquid Glass (iOS 18 style) */
+  .liquid-glass{@apply backdrop-blur-2xl bg-[#1A2538]/40 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] backdrop-saturate-150 rounded-3xl}
+  .liquid-glass-nav{@apply backdrop-blur-xl bg-[#1A2538]/85 border border-white/20 shadow-2xl backdrop-saturate-150 rounded-full}
+  /* Frosted glass for light (cream) backgrounds */
+  .glass-light{@apply bg-white/70 border border-[#D4AF37]/30 backdrop-blur-md rounded-3xl shadow-[0_8px_32px_0_rgba(26,37,56,0.08)]}
+}
+
+/* Child stagger: 0 -> 1, translateY(24px) -> 0 */
+.stagger>*{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.stagger.on>*{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stagger>*{transition:none}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.fade-in{animation:fadeUp .5s cubic-bezier(.16,1,.3,1)}
